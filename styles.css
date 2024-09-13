@@ -4,20 +4,9 @@
   box-sizing: border-box;
 }
 
-
-@font-face {
-  font-family: 'square_sans_serif'; 
-  src: url('fonts/square_sans_serif_7.ttf'), url('https://res.cloudinary.com/dmf7frt4a/raw/upload/v1725278975/square_sans_serif_7_qavwf9.ttf'); 
-}
-
-@font-face {
-  font-family: 'digital'; 
-  src: url('https://res.cloudinary.com/dmf7frt4a/raw/upload/v1725278975/digital-7_etj6il.ttf'); 
-}
-
 body {
   height: 100vh;
-  background-image: url('imgs/eco-back.jpg'), url('https://raw.githubusercontent.com/Ayoub-Younes/build-a-cash-register/master/imgs/background.jpg');
+  background-image: url('imgs/eco-back.jpg'), url('https://raw.githubusercontent.com/Ayoub-Younes/visualize-data-with-a-bar-chart/master/imgs/eco-back.jpg');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
