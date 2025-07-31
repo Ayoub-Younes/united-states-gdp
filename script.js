@@ -1,3 +1,24 @@
+let bgLoaded = false;
+let dataLoaded = false;
+
+const img = document.getElementById('background-img');
+
+function tryShow() {
+  if (bgLoaded && dataLoaded) {
+    document.body.classList.remove('loading');
+    document.body.classList.add('loaded');
+  }
+}
+
+if (img.complete) {
+  bgLoaded = true;
+} else {
+  img.onload = () => {
+    bgLoaded = true;
+    tryShow();
+  }
+}
+
 // Fetching data
 const req = new XMLHttpRequest();
 req.open("GET", 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json', true);
@@ -112,14 +133,12 @@ const svg = d3.select(".container")
         .style("text-anchor", "middle")
         .text("Gross Domestic Product");
 
-// Show the main content after rendering
-document.getElementById('body').style.display = 'flex'; // Display the content after SVG is rendered
+    dataLoaded = true;
+    tryShow();
+
 };
 
-// Fallback to ensure the content displays after 3 seconds
-setTimeout(() => {
-    document.getElementById('body').style.display = 'flex';
-}, 3000);
+
 
 const parseDate = d3.timeParse("%Y-%m-%d");
 const formatQuarter = (date) => {
@@ -132,28 +151,7 @@ const formatQuarter = (date) => {
 };
 const formatNumber = d3.format(",");
 
-document.addEventListener('DOMContentLoaded', function () {
-  const img = document.getElementById('background-img');
 
-  function showContent() {
-    document.body.classList.remove('loading');
-    document.body.classList.add('loaded');
-  }
-
-  if (img.complete) {
-    showContent();
-  } else {
-    img.onload = showContent;
-  }
-
-  setTimeout(showContent, 3000); 
-});
-
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-if (isMobile) {
-  document.documentElement.style.height = '100%';
-
-}
 
 function setViewportHeight() {
   const vh = window.innerHeight * 0.01;
